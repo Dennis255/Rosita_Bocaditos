@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Header from './Header'; // Importando el Header externo
 
-const Menu = () => {
+const Recomendaciones = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -18,70 +18,69 @@ const Menu = () => {
 
   const enviarWhatsApp = (producto) => {
     const numeroEmpresa = "593988660874";
-    const mensaje = `Hola, me gustaría cotizar el producto: *${producto}*. ¿Podrían darme más información?`;
+    const mensaje = `Hola, estoy interesado en la recomendación: *${producto}*. ¿Podrían darme más información?`;
     const url = `https://wa.me/${numeroEmpresa}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
   };
 
-  // Datos de las categorías y productos
-  const categorias = [
+  // Datos de eventos y productos recomendados
+  const eventos = [
     {
-      id: "hojaldre",
-      titulo: "Bocaditos de Hojaldre",
+      id: "bodas",
+      titulo: "Recomendaciones para Bodas",
       productos: [
-        { nombre: "Caracoles Grandes", imagen: "/imagenbocaditos/caracolesg.jpg" },
-        { nombre: "Palitos de Queso", imagen: "/imagenbocaditos/palitosqueso.jpg" },
-        { nombre: "Empanadas de Hojaldre", imagen: "/imagenbocaditos/empanadas.jpg" },
-        { nombre: "Palitos de Queso", imagen: "/imagenbocaditos/palitosqueso.jpg" },
-        { nombre: "Palitos de Queso", imagen: "/imagenbocaditos/palitosqueso.jpg" },
-        { nombre: "Palitos de Queso", imagen: "/imagenbocaditos/palitosqueso.jpg" },
-        { nombre: "Palitos de Queso", imagen: "/imagenbocaditos/palitosqueso.jpg" }
+        { nombre: "Torta de Bodas", imagen: "/imagenesrecomendaciones/torta_boda.jpg" },
+        { nombre: "Mesa de Dulces", imagen: "/imagenesrecomendaciones/mesa_dulces.jpg" },
+        { nombre: "Vinos Especiales", imagen: "/imagenesrecomendaciones/vinos.jpg" }
       ]
     },
     {
-      id: "especiales",
-      titulo: "Bocaditos Especiales",
+      id: "graduaciones",
+      titulo: "Recomendaciones para Graduaciones",
       productos: [
-        { nombre: "Volovanes de Carne", imagen: "/imagenbocaditos/volovanes.jpg" },
-        { nombre: "Mini Pizzas", imagen: "/imagenbocaditos/minipizzas.jpg" }
+        { nombre: "Cupcakes Temáticos", imagen: "/imagenesrecomendaciones/cupcakes_graduacion.jpg" },
+        { nombre: "Bocaditos Salados", imagen: "/imagenesrecomendaciones/bocaditos_salados.jpg" },
+        { nombre: "Torta de Graduación", imagen: "/imagenesrecomendaciones/torta_graduacion.jpg" }
       ]
     },
     {
-      id: "postres",
-      titulo: "Postres",
+      id: "cumpleaños",
+      titulo: "Recomendaciones para Cumpleaños",
       productos: [
-        { nombre: "Cupcakes", imagen: "/imagenbocaditos/cupcakes.jpg" },
-        { nombre: "Brownies", imagen: "/imagenbocaditos/brownies.jpg" }
+        { nombre: "Pastel Personalizado", imagen: "/imagenesrecomendaciones/pastel_cumple.jpg" },
+        { nombre: "Gelatinas Artísticas", imagen: "/imagenesrecomendaciones/gelatinas.jpg" },
+        { nombre: "Snack Box para Niños", imagen: "/imagenesrecomendaciones/snack_box.jpg" }
       ]
     },
     {
-      id: "reposteria",
-      titulo: "Repostería",
+      id: "aniversarios",
+      titulo: "Recomendaciones para Aniversarios",
       productos: [
-        { nombre: "Alfajores", imagen: "/imagenbocaditos/alfajores.jpg" },
-        { nombre: "Cheesecake", imagen: "/imagenbocaditos/cheesecake.jpg" }
+        { nombre: "Cena Romántica", imagen: "/imagenesrecomendaciones/cena_romantica.jpg" },
+        { nombre: "Caja de Bombones", imagen: "/imagenesrecomendaciones/bombones.jpg" },
+        { nombre: "Arreglo Floral con Dulces", imagen: "/imagenesrecomendaciones/arreglo_dulces.jpg" }
       ]
     }
   ];
 
   return (
     <>
-      <Header /> {/* Ahora el Header es un componente separado */}
+      <Header /> {/* Usa el mismo Header */}
 
       <div className="imagen1">
         <center>
-          <img src="/imagenbocaditos/kupi.gif" width="50%" height="220px" alt="" />
+          <img src="/imagenesrecomendaciones/eventos.jpg" width="50%" height="220px" alt="Eventos" />
         </center>
       </div>
 
-      <section className="menu" id="menu">
-        <h1 className="heading">Nuestro <span>Menú</span></h1>
+      <section className="recomendaciones" id="recomendaciones">
+        <h1 className="heading">Nuestras <span>Recomendaciones</span></h1>
 
-        {categorias.map((categoria, index) => (
-          <div key={index} id={categoria.id}>
-            <h2 className="category-title">{categoria.titulo}</h2>
+        {eventos.map((evento, index) => (
+          <div key={index} id={evento.id}>
+            <h2 className="category-title">{evento.titulo}</h2>
             <div className="box-container">
-              {categoria.productos.map((producto, i) => (
+              {evento.productos.map((producto, i) => (
                 <div className="box" key={i}>
                   <img src={producto.imagen} alt={producto.nombre} />
                   <h3>{producto.nombre}</h3>
@@ -177,4 +176,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default Recomendaciones;

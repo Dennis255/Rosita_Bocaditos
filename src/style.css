@@ -342,7 +342,7 @@ section{
     height: 5rem;
     width: 5rem;
     line-height: 5rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
     border:var(--border);
     color: #fff;
     margin: .3rem;
@@ -398,50 +398,108 @@ font-size: 1.7rem;
 
 
 
-@media(max-width:991px){
-    #menu.btn{
-        display: inline-block;
-       
+@media (max-width: 991px) {
+    html {
+        font-size: 55%;
     }
-    .header .navbar{
-    position: absolute;
-    top: 100%;
-    right: -100%;
-    background: #fff;
-    width: 30rem;
-        height: calc(100vh - 9.5rem);
-   }
-    .header .navbar.active{
+
+    /* Botón del menú */
+    #menu-btn {
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    /* Navbar oculto al inicio */
+    .header .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        background: rgba(255, 255, 255, 0.95);
+        width: 70%;
+        height: 100vh;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s ease-in-out;
+        padding: 2rem;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Mostrar el menú cuando esté activo */
+    .header .navbar.active {
         right: 0;
     }
-    
+
+    /* Estilo de los enlaces dentro del menú */
     .header .navbar a {
-      color: var(--black);
-      display: block;
-      margin: 1.5rem;
-      padding: .5rem;
-      font-size: 2rem;
-  }
-    .header .search-form{
-        width:90%;
+        color: var(--black);
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+        text-align: center;
+        transition: color 0.3s;
+    }
+
+    .header .navbar a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Botón de cerrar menú */
+    .close-menu {
+        position: absolute;
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 2.5rem;
+        cursor: pointer;
+        color: var(--black);
+        transition: color 0.3s;
+    }
+
+    .close-menu:hover {
+        color: red;
+    }
+
+    /* Ajuste del formulario de búsqueda */
+    .header .search-form {
+        width: 90%;
         right: 2rem;
     }
-    
-    .home{
+
+    /* Ajuste de la sección "home" */
+    .home {
         background-position: left;
         justify-content: center;
         text-align: center;
     }
-    .home .content h3{
+
+    .home .content h3 {
         font-size: 4.5rem;
-        
-    }
-    .home .content p{
-        font-size: 1.5rem;
-        
     }
 
+    .home .content p {
+        font-size: 1.5rem;
+    }
+
+    /* Cerrar menú al hacer clic fuera de él */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1500;
+    }
+
+    .overlay.active {
+        display: block;
+    }
 }
+
+
 @media(max-width:450px)
 {
     html{
@@ -592,5 +650,102 @@ button {
   
   button:hover {
     background-color: #0056b3;
+  }
+  
+  .categories {
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+  .categories h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .category-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .category {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 15px;
+    width: 220px;
+    transition: transform 0.3s;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .category:hover {
+    transform: scale(1.05);
+  }
+  
+  .category img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .category h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+  
+  .footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .footer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .btn {
+    display: inline-block;
+    background: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: background 0.3s;
+  }
+  
+  .btn:hover {
+    background: #ff3b3b;
+  }
+  .main-content {
+    flex: 1; /* Empuja el footer hacia abajo */
+  }
+  
+  .footer {
+    background-color: #333;  /* Fondo gris oscuro */
+    color: white;            /* Texto blanco */
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: auto;
+    width: 100%;
+  }
+  
+  .footer-info span {
+    text-transform: none; /* Asegura que se mantenga como está escrito */
   }
   
